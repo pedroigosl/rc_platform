@@ -6,45 +6,49 @@
 class dcMotor
 {
 public:
+    dcMotor();
     // Sets a dcMotor and pins for direction
-    dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b);
+    dcMotor(uint8_t pin_1, uint8_t pin_2);
     // Sets a dcMotor, pins for direction and pin for speed
-    dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b, uint8_t pin_s);
+    dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s);
     // If inverted true, inverts motor output
-    dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b, bool inverted);
+    dcMotor(uint8_t pin_1, uint8_t pin_2, bool inv);
     // If inverted true, inverts motor output
-    dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b, uint8_t pin_s, bool inverted);
+    dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s, bool inv);
     // destructor
     ~dcMotor();
+    // sets direction pins for motor
+    void setPins(uint8_t pin_1, uint8_t pin_2);
+    // sets direction and speed pins for motor
+    void setPins(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s);
+    // sets motor speed;
+    void setSpeed(uint8_t spd);
+    // return direction pin a
+    uint8_t getDirPinA();
+    // return direction pin b
+    uint8_t getDirPinB();
+    // return direction pin numbers
+    uint8_t *getDirPins();
+    // return speed pin number
+    uint8_t getSpdPin();
+    // return speed value
+    uint8_t getSpeed();
+    // return whether is inverted
+    bool isInverted();
     // sets INa = 1 and INb = 0
     void runForward();
     // sets INa = 0 and INb = 1
     void runBackward();
     // sets all IN pins to 0
     void stop();
-    // updates motor number
-    void setMotor(uint8_t motor_num);
-    // sets direction pins for motor
-    void setPins(uint8_t pin_a, uint8_t pin_b);
-    // sets direction and speed pins for motor
-    void setPins(uint8_t pin_a, uint8_t pin_b, uint8_t pin_s);
-    void setTurning(uint8_t);
-    void setSpeed(uint8_t);
-    uint8_t getNum();
-    uint8_t getDirPins();
-    uint8_t getSpdPin();
-    uint8_t getSpeed();
-    bool isInverted();
 
 private:
-    uint8_t motor_num;
-    uint8_t pin_a, pin_b; // direction pins
-    uint8_t pin_s;        // speed pin
-    uint8_t speed = 0;
+    uint8_t pin_a, pin_b;               // direction pins
+    uint8_t pin_spd;                    // speed pin
+    uint8_t speed = 0;                  // speed value
     uint8_t pinout_a = 0, pinout_b = 0; // direction pins outputs
-    // TO CHECK. THE PIN IS PWM, SO 0 IS ACTUALLY MOVING BACKWARD
-    uint8_t pinout_s = 0;  // speed pin output
-    bool inverted = false; // whether to change motor direction
+    uint8_t pinout_s = 0;               // speed pin output
+    bool inverted = false;              // whether to change motor direction
 };
 
 #endif
