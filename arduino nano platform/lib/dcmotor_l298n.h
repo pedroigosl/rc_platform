@@ -23,6 +23,8 @@ public:
     void setPins(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s);
     // sets motor speed;
     void setSpeed(uint8_t spd);
+    // toggle inverting the motor direction
+    void invert();
     // return direction pin a
     uint8_t getDirPinA();
     // return direction pin b
