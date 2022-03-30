@@ -14,6 +14,8 @@ public:
     dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b, bool inverted);
     // If inverted true, inverts motor output
     dcMotor(uint8_t motor_num, uint8_t pin_a, uint8_t pin_b, uint8_t pin_s, bool inverted);
+    // destructor
+    ~dcMotor();
     // sets INa = 1 and INb = 0
     void runForward();
     // sets INa = 0 and INb = 1
@@ -28,6 +30,11 @@ public:
     void setPins(uint8_t pin_a, uint8_t pin_b, uint8_t pin_s);
     void setTurning(uint8_t);
     void setSpeed(uint8_t);
+    uint8_t getNum();
+    uint8_t getDirPins();
+    uint8_t getSpdPin();
+    uint8_t getSpeed();
+    bool isInverted();
 
 private:
     uint8_t motor_num;
