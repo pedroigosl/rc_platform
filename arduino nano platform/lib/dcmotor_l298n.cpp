@@ -164,3 +164,31 @@ void dcMotor::stop()
     digitalWrite(pin_a, pinout_a);
     digitalWrite(pin_b, pinout_b);
 }
+
+void dcMotor::run(uint8_t mode = FORWARD)
+{
+    switch (mode)
+    {
+    case FORWARD:
+        runForward();
+        break;
+    case BACKWARD:
+        runBackward();
+        break;
+    }
+}
+
+void dcMotor::run(uint8_t spd, uint8_t mode = FORWARD)
+{
+    switch (mode)
+    {
+    case FORWARD:
+        setSpeed(spd);
+        runForward();
+        break;
+    case BACKWARD:
+        setSpeed(spd);
+        runBackward();
+        break;
+    }
+}

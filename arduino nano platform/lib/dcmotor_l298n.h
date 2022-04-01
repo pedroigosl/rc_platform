@@ -43,6 +43,10 @@ public:
     void runBackward();
     // sets all IN pins to 0
     void stop();
+    // mode FORWARD and BACKWARD
+    void run(uint8_t mode);
+    // mode FORWARD and BACKWARD with speed
+    void run(uint8_t spd, uint8_t mode);
 
 private:
     uint8_t pin_a, pin_b;               // direction pins
