@@ -4,42 +4,42 @@ dcMotor::dcMotor()
 {
 }
 
-dcMotor::dcMotor(uint8_t pin_1, uint8_t pin_2)
+dcMotor::dcMotor(uint8_t pin_a, uint8_t pin_b)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);
 }
 
-dcMotor::dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s)
+dcMotor::dcMotor(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
-    pin_spd = pin_s;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
+    this->pin_spd = pin_spd;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);
     pinMode(pin_spd, OUTPUT);
 }
 
-dcMotor::dcMotor(uint8_t pin_1, uint8_t pin_2, bool inv)
+dcMotor::dcMotor(uint8_t pin_a, uint8_t pin_b, bool inverted)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
-    inverted = inv;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
+    this->inverted = inverted;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);
 }
 
-dcMotor::dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s, bool inv)
+dcMotor::dcMotor(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd, bool inverted)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
-    pin_spd = pin_s;
-    inverted = inv;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
+    this->pin_spd = pin_spd;
+    this->inverted = inverted;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);
@@ -50,20 +50,20 @@ dcMotor::~dcMotor()
 {
 }
 
-void dcMotor::setPins(uint8_t pin_1, uint8_t pin_2)
+void dcMotor::setPins(uint8_t pin_a, uint8_t pin_b)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);
 }
 
-void dcMotor::setPins(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s)
+void dcMotor::setPins(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd)
 {
-    pin_a = pin_1;
-    pin_b = pin_2;
-    pin_spd = pin_s;
+    this->pin_a = pin_a;
+    this->pin_b = pin_b;
+    this->pin_spd = pin_spd;
 
     pinMode(pin_a, OUTPUT);
     pinMode(pin_b, OUTPUT);

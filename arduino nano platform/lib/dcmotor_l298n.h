@@ -8,19 +8,19 @@ class dcMotor
 public:
     dcMotor();
     // Sets a dcMotor and pins for direction
-    dcMotor(uint8_t pin_1, uint8_t pin_2);
+    dcMotor(uint8_t pin_a, uint8_t pin_b);
     // Sets a dcMotor, pins for direction and pin for speed
-    dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s);
+    dcMotor(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd);
     // If inverted true, inverts motor output
-    dcMotor(uint8_t pin_1, uint8_t pin_2, bool inv);
+    dcMotor(uint8_t pin_a, uint8_t pin_b, bool inv);
     // If inverted true, inverts motor output
-    dcMotor(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s, bool inv);
+    dcMotor(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd, bool invert);
     // destructor
     ~dcMotor();
     // sets direction pins for motor
-    void setPins(uint8_t pin_1, uint8_t pin_2);
+    void setPins(uint8_t pin_a, uint8_t pin_b);
     // sets direction and speed pins for motor
-    void setPins(uint8_t pin_1, uint8_t pin_2, uint8_t pin_s);
+    void setPins(uint8_t pin_a, uint8_t pin_b, uint8_t pin_spd);
     // sets motor speed;
     void setSpeed(uint8_t spd);
     // toggle inverting the motor direction
