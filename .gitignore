@@ -2,6 +2,6 @@
 .vscode/*
 lib/*
 test/*
-include/*
+include/README
 platformio.ini
 legacy_rc_car_v6.ino
