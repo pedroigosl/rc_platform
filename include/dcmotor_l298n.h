@@ -76,8 +76,8 @@ public:
         digitalWrite(pin_b, HIGH);
     }
 
-    uint8_t offset(uint8_t input)
+    int offset(int input)
     {
-        return (uint8_t)(multiplier * (float)input);
+        return (int)(multiplier * (float)input);
     }
 };

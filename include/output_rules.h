@@ -26,10 +26,40 @@ int rltInput(uint16_t val_in)
 
 int getSign(int val)
 {
-    return (val > 0) - (val < 0);
+    return (val >= 0) - (val < 0);
 }
 
 void runMotors()
+{
+    int str_val, thrt_val, l_thrt_val, r_thrt_val;
+    int thrt_rlt = rltInput(channel_values[throttle_ch]);
+    int str_rlt = rltInput(channel_values[steering_ch]);
+    if (thrt_rlt > 0)
+    {
+        thrt_val = norm(thrt_rlt, 0, input_max - input_mid);
+        str_val = (str_rlt > 0) * norm(str_rlt, 0, input_max - input_mid) + (str_rlt < 0) * norm(abs(str_rlt), 0, input_mid - input_min);
+        l_thrt_val = (str_rlt < 0) * max(thrt_val - str_val, 0) + (str_rlt >= 0) * thrt_val;
+        r_thrt_val = (str_rlt > 0) * max(thrt_val - str_val, 0) + (str_rlt <= 0) * thrt_val;
+    }
+    else if (thrt_rlt < 0)
+    {
+        thrt_val = norm(abs(thrt_rlt), 0, input_mid - input_min);
+        str_val = (str_rlt > 0) * norm(str_rlt, 0, input_max - input_mid) + (str_rlt < 0) * norm(abs(str_rlt), 0, input_mid - input_min);
+        l_thrt_val = (str_rlt < 0) * max(thrt_val - str_val, 0) + (str_rlt >= 0) * thrt_val;
+        r_thrt_val = (str_rlt > 0) * max(thrt_val - str_val, 0) + (str_rlt <= 0) * thrt_val;
+    }
+    else
+    {
+        thrt_val = 0;
+        str_val = (str_rlt > 0) * norm(str_rlt, 0, input_max - input_mid) + (str_rlt < 0) * norm(abs(str_rlt), 0, input_mid - input_min);
+        l_thrt_val = getSign(str_rlt) * str_val;
+        r_thrt_val = -getSign(str_rlt) * str_val;
+    }
+    motorL.run(getSign(thrt_rlt) * motorL.offset(l_thrt_val));
+    motorR.run(getSign(thrt_rlt) * motorR.offset(r_thrt_val));
+}
+
+void runTankMotors()
 {
     uint8_t str_val, thrt_val, l_thrt_val, r_thrt_val;
     int thrt_rlt = rltInput(channel_values[throttle_ch]);
@@ -52,17 +82,6 @@ void runMotors()
     motorR.run(getSign(thrt_rlt) * motorR.offset(r_thrt_val));
 }
 
-void runCrazyMotors()
-{
-    uint8_t str_val, thrt_val;
-    // motorA.setSpd(200);
-    // if ()
-
-    motorL.forward(motorL.offset(0));
-    // motorB.setSpd(200);
-    // motorR.forward(200);
-}
-
 void runLED() {}
 
 void runServo() {}
@@ -72,7 +91,7 @@ void setModes()
 {
     if (channel_values[4] > (input_mid + deadzone))
     {
-        motors = runCrazyMotors;
+        motors = runTankMotors;
         leds = runLED;
     }
     else
