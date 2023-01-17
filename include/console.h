@@ -12,3 +12,14 @@ void channelReport()
     }
     Serial.println();
 }
+
+void speedReport()
+{
+    Serial.print(motorL.getSpd());
+    Serial.print("\t");
+    Serial.println(motorR.getSpd());
+}
+
+void modeReport()
+{
+}
