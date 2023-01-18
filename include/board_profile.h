@@ -6,6 +6,10 @@
 
 #include <dcmotor_l298n.h>
 
+#include <Servo.h>
+
+Servo head;
+
 const uint32_t baud = 115200;
 
 dcMotor motorL, motorR;
@@ -13,10 +17,10 @@ dcMotor motorL, motorR;
 // Pin setting
 const uint8_t bltld_pin = LED_BUILTIN;
 const uint8_t led_pin = 10;
-const uint8_t servo_pin = 9;
+const uint8_t servo_pin = 11;
 const uint8_t extv_pin = A6;
 
-const uint8_t tlm_pin = 11; // SPI enabled pin
+const uint8_t tlm_pin = 12; // SPI enabled pin
 const uint8_t ppm_pin = 2;  // Interrupt enabled pin
 
 const uint8_t mL_pina = A0;
@@ -40,6 +44,8 @@ const uint8_t steering_ch = 0;       // Steering channel
 const uint8_t throttle_ch = 1;       // Throttle channel
 const uint8_t motor_threshold = 200; // Motor threshold to avoid strain in interval [0,255]
 
+const uint8_t head_ch = 3;
+
 // Sensor constant values
 const double r1 = 30000; // Voltage sensor resistor 1
 const double r2 = 7500;  // Voltage sensor resistor 2
@@ -49,12 +55,16 @@ iBUSTelemetry telemetry(tlm_pin);
 PPMReader ppm(ppm_pin, channel_amount);
 
 static struct pt input_pt;
+static struct pt run_pt;
 
 void setPins()
 {
     pinMode(bltld_pin, OUTPUT);
     pinMode(led_pin, OUTPUT);
     pinMode(extv_pin, INPUT);
+
+    head.attach(servo_pin);
+    // pinMode(servo_pin, OUTPUT);
 
     motorL.setup(mL_pina, mL_pinb, mL_pinspd);
     motorR.setup(mR_pina, mR_pinb, mR_pinspd);
@@ -63,4 +73,5 @@ void setPins()
 void setPointers()
 {
     PT_INIT(&input_pt);
+    PT_INIT(&run_pt);
 }

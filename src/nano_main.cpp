@@ -27,8 +27,8 @@ void loop()
     runTelemetry();
     getInput(&input_pt);
     setModes();
-    runAll();
+    runAll(); //&run_pt);
 
-    // channelReport();
-    speedReport();
+    channelReport();
+    // speedReport();
 }
