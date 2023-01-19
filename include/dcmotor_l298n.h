@@ -70,7 +70,7 @@ public:
         digitalWrite(pin_b, LOW);
     }
 
-    void stop()
+    void brake()
     {
         digitalWrite(pin_a, HIGH);
         digitalWrite(pin_b, HIGH);
