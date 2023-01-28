@@ -4,7 +4,8 @@
 #include <PPMReader.h>
 #include <iBUSTelemetry.h>
 
-#include <dcmotor_l298n.h>
+// #include <dcmotor_l298n.h>
+#include <dcmotor_mx1508.h>
 
 #include <Servo.h>
 
@@ -12,7 +13,8 @@ Servo head;
 
 const uint32_t baud = 115200;
 
-dcMotor motorL, motorR;
+// dcMotorL298N motorL, motorR;
+dcMotorMX1508 motorL, motorR;
 
 // Pin setting
 const uint8_t bltld_pin = LED_BUILTIN;
@@ -25,11 +27,11 @@ const uint8_t ppm_pin = 2;  // Interrupt enabled pin
 
 const uint8_t mL_pina = A0;
 const uint8_t mL_pinb = A1;
-const uint8_t mL_pinspd = 5;
+// const uint8_t mL_pinspd = 5;
 
 const uint8_t mR_pina = A2;
 const uint8_t mR_pinb = A3;
-const uint8_t mR_pinspd = 6;
+// const uint8_t mR_pinspd = 6;
 
 // Channel settings
 const uint8_t channel_amount = 10;
@@ -66,8 +68,10 @@ void setPins()
     head.attach(servo_pin);
     // pinMode(servo_pin, OUTPUT);
 
-    motorL.setup(mL_pina, mL_pinb, mL_pinspd);
-    motorR.setup(mR_pina, mR_pinb, mR_pinspd);
+    // motorL.setup(mL_pina, mL_pinb, mL_pinspd);
+    // motorR.setup(mR_pina, mR_pinb, mR_pinspd);
+    motorL.setup(mL_pina, mL_pinb); //, mL_pinspd);
+    motorR.setup(mR_pina, mR_pinb); //, mR_pinspd);
 }
 
 void setPointers()
