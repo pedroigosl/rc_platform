@@ -1,10 +1,6 @@
 #include <Arduino.h>
 #include <pt.h>
 
-/******************************************
-                TELEMETRY
-******************************************/
-
 void setSensors()
 {
     telemetry.setSensorValueFP(1, voltage(analogRead(extv_pin))); // Sets external voltage sensor to telemetry
@@ -21,10 +17,6 @@ void runTelemetry()
     telemetry.run();
     setSensors();
 }
-
-/******************************************
-            CHANNELS' INPUT
-******************************************/
 
 void getInput(struct pt *pt)
 {
