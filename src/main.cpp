@@ -24,11 +24,11 @@ void setup()
 
 void loop()
 {
-    runTelemetry();
+    // runTelemetry();
     getInput(&input_pt);
     setModes();
     runAll(); //&run_pt);
 
-    channelReport();
-    // speedReport();
+    // channelReport();
+    speedReport();
 }

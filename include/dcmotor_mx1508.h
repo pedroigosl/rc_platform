@@ -6,7 +6,7 @@ class dcMotorMX1508
     float multiplier = 1.0; // Multiplier for balance. in interval [0.0, 1.0]
 
 public:
-    void setup(uint8_t pin_a, uint8_t pin_b, float multiplier = 1.0)
+    void setup(uint8_t pin_a, uint8_t pin_b, float multiplier = 0.5) // 1.0)
     {
         this->pin_a = pin_a;
         this->pin_b = pin_b;
@@ -19,6 +19,11 @@ public:
     void setSpd(uint8_t spd)
     {
         this->spd = spd;
+    }
+
+    void setMultiplier(float multiplier)
+    {
+        this->multiplier = multiplier;
     }
 
     uint8_t getSpd()
