@@ -25,12 +25,12 @@ const uint8_t extv_pin = A6;
 const uint8_t tlm_pin = 12; // SPI enabled pin
 const uint8_t ppm_pin = 2;  // Interrupt enabled pin
 
-const uint8_t mL_pina = A0;
-const uint8_t mL_pinb = A1;
+const uint8_t mL_pina = 3; // A0;
+const uint8_t mL_pinb = 5; // A1;
 // const uint8_t mL_pinspd = 5;
 
-const uint8_t mR_pina = A2;
-const uint8_t mR_pinb = A3;
+const uint8_t mR_pina = 6;  // A2;
+const uint8_t mR_pinb = 11; // A3;
 // const uint8_t mR_pinspd = 6;
 
 // Channel settings
@@ -45,6 +45,9 @@ const uint16_t deadzone = 100; // Input deadzone buffer from mid point
 const uint8_t steering_ch = 0;       // Steering channel
 const uint8_t throttle_ch = 1;       // Throttle channel
 const uint8_t motor_threshold = 200; // Motor threshold to avoid strain in interval [0,255]
+
+const uint8_t mL_ratio_ch = 4;
+const uint8_t mR_ratio_ch = 5;
 
 const uint8_t head_ch = 3;
 
@@ -65,7 +68,7 @@ void setPins()
     pinMode(led_pin, OUTPUT);
     pinMode(extv_pin, INPUT);
 
-    head.attach(servo_pin);
+    // head.attach(servo_pin);
     // pinMode(servo_pin, OUTPUT);
 
     // motorL.setup(mL_pina, mL_pinb, mL_pinspd);

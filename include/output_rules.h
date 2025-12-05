@@ -56,6 +56,12 @@ void runMotors()
         l_thrt_val = getSign(str_rlt) * str_val;
         r_thrt_val = -getSign(str_rlt) * str_val;
     }
+
+    float mL_multiplier = (float)(2000 - channel_values[mL_ratio_ch]) / 1000.0;
+    float mR_multiplier = (float)(2000 - channel_values[mR_ratio_ch]) / 1000.0;
+    motorL.setMultiplier(mL_multiplier);
+    motorR.setMultiplier(mR_multiplier);
+
     motorL.run(getSign(thrt_rlt) * motorL.offset(l_thrt_val));
     motorR.run(getSign(thrt_rlt) * motorR.offset(r_thrt_val));
 }
