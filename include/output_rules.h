@@ -3,7 +3,7 @@
 
 void (*motors)();
 void (*leds)();
-void (*servos)();
+// void (*servos)();
 
 uint8_t norm(uint16_t val_in, uint16_t val_min, uint16_t val_max, uint8_t thresh = motor_threshold)
 {
@@ -78,23 +78,23 @@ void runLED()
     }
 }
 
-void runServo()
-{
-    int turn_val;
-    int head_abs = channel_values[head_ch]; // subtraction used to remove noise
-    int head_rlt = rltInput(head_abs);
-    if ((head_abs != 0) && (head_rlt != 0))
-    {
-        turn_val = norm(head_abs, 1000, 2000, 180);
-        // head.write(turn_val);
-    }
-    else
-    {
-        turn_val = 90;
-    }
-    head.write(turn_val);
-    // analogWrite(servo_pin, head_abs);
-}
+// void runServo()
+// {
+//     int turn_val;
+//     int head_abs = channel_values[head_ch]; // subtraction used to remove noise
+//     int head_rlt = rltInput(head_abs);
+//     if ((head_abs != 0) && (head_rlt != 0))
+//     {
+//         turn_val = norm(head_abs, 1000, 2000, 180);
+//         // head.write(turn_val);
+//     }
+//     else
+//     {
+//         turn_val = 90;
+//     }
+//     head.write(turn_val);
+//     // analogWrite(servo_pin, head_abs);
+// }
 
 // Sets which mode each component should be run on
 void setModes()
@@ -103,13 +103,13 @@ void setModes()
     {
         motors = runMotors;
         leds = runLED;
-        servos = runServo;
+        // servos = runServo;
     }
     else
     {
         motors = runMotors;
         leds = runLED;
-        servos = runServo;
+        // servos = runServo;
     }
 }
 
@@ -118,6 +118,6 @@ void runAll() // struct pt *pt)
     // PT_BEGIN(pt);
     motors();
     leds();
-    servos();
+    // servos();
     // PT_END(pt);
 }

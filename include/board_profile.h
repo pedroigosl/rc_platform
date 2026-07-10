@@ -7,9 +7,9 @@
 // #include <dcmotor_l298n.h>
 #include <dcmotor_mx1508.h>
 
-#include <Servo.h>
+// #include <Servo.h>
 
-Servo head;
+// Servo head;
 
 const uint32_t baud = 115200;
 
@@ -19,7 +19,7 @@ dcMotorMX1508 motorL, motorR;
 // Pin setting
 const uint8_t bltld_pin = LED_BUILTIN;
 const uint8_t led_pin = 10;
-const uint8_t servo_pin = 11;
+// const uint8_t servo_pin = 11;
 const uint8_t extv_pin = A6;
 
 const uint8_t tlm_pin = 12; // SPI enabled pin
@@ -49,7 +49,7 @@ const uint8_t motor_threshold = 200; // Motor threshold to avoid strain in inter
 const uint8_t mL_ratio_ch = 4;
 const uint8_t mR_ratio_ch = 5;
 
-const uint8_t head_ch = 3;
+// const uint8_t head_ch = 3;
 
 // Sensor constant values
 const double r1 = 30000; // Voltage sensor resistor 1
