@@ -3,6 +3,7 @@
 class dcMotorMX1508
 {
     uint8_t spd = 0, pin_a, pin_b;
+    int raw_spd;
     float multiplier = 1.0; // Multiplier for balance. in interval [0.0, 1.0]
 
 public:
@@ -26,9 +27,9 @@ public:
         this->multiplier = multiplier;
     }
 
-    uint8_t getSpd()
+    int getSpd()
     {
-        return spd;
+        return raw_spd;
     }
 
     void forward()
@@ -55,6 +56,7 @@ public:
 
     void run(int spd)
     {
+        this->raw_spd = spd;
         if (spd >= 0)
         {
             forward((uint8_t)spd);
