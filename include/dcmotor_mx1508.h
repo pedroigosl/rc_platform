@@ -34,7 +34,7 @@ public:
     void forward()
     {
         analogWrite(pin_a, spd);
-        digitalWrite(pin_b, LOW);
+        analogWrite(pin_b, 0);
     }
     void forward(uint8_t spd)
     {
@@ -43,7 +43,7 @@ public:
     }
     void backward()
     {
-        digitalWrite(pin_a, LOW);
+        analogWrite(pin_a, 0);
         analogWrite(pin_b, spd);
     }
 
@@ -67,14 +67,14 @@ public:
 
     void off()
     {
-        digitalWrite(pin_a, LOW);
-        digitalWrite(pin_b, LOW);
+        analogWrite(pin_a, 0);
+        analogWrite(pin_b, 0);
     }
 
     void brake()
     {
-        digitalWrite(pin_a, HIGH);
-        digitalWrite(pin_b, HIGH);
+        analogWrite(pin_a, 255);
+        analogWrite(pin_b, 255);
     }
 
     int offset(int input)
