@@ -68,7 +68,7 @@ void runMotors()
 
 void runLED()
 {
-    if (channel_values[4] > (input_mid + deadzone))
+    if (channel_values[led_ch] > (input_mid + deadzone))
     {
         digitalWrite(led_pin, HIGH);
     }

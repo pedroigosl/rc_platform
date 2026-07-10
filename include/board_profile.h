@@ -18,7 +18,7 @@ dcMotorMX1508 motorL, motorR;
 
 // Pin setting
 const uint8_t bltld_pin = LED_BUILTIN;
-const uint8_t led_pin = 10;
+const uint8_t led_pin = LED_BUILTIN; // 10;
 // const uint8_t servo_pin = 11;
 const uint8_t extv_pin = A6;
 
@@ -48,6 +48,8 @@ const uint8_t motor_threshold = 200; // Motor threshold to avoid strain in inter
 
 const uint8_t mL_ratio_ch = 4;
 const uint8_t mR_ratio_ch = 5;
+
+const uint8_t led_ch = 7;
 
 // const uint8_t head_ch = 3;
 
