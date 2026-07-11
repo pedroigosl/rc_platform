@@ -49,7 +49,7 @@ const uint8_t motor_threshold = 200; // Motor threshold to avoid strain in inter
 const uint8_t mL_ratio_ch = 4;
 const uint8_t mR_ratio_ch = 5;
 
-const uint8_t mode_ch = 7;
+const uint8_t mode_ch = 6;
 
 const uint8_t led_ch = 7;
 

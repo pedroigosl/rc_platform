@@ -99,8 +99,8 @@ void runLED()
 
 void testMode()
 {
-    motorL.run(-100);
-    motorR.run(-100);
+    motorL.brake();
+    motorR.brake();
 }
 
 // Sets which mode each component should be run on
