@@ -108,8 +108,8 @@ void setModes()
 {
     if (channel_values[mode_ch] > (input_mid + deadzone))
     {
-        // motors = testMode;
-        motors = runMotors;
+        motors = testMode;
+        // motors = runMotors;
         leds = runLED;
         // servos = runServo;
     }
