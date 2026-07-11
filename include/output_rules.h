@@ -64,6 +64,7 @@ void runMotors()
 
     motorL.run(getSign(thrt_rlt) * motorL.offset(l_thrt_val));
     motorR.run(getSign(thrt_rlt) * motorR.offset(r_thrt_val));
+
 }
 
 void runLED()
@@ -96,11 +97,18 @@ void runLED()
 //     // analogWrite(servo_pin, head_abs);
 // }
 
+void testMode()
+{
+    motorL.run(-100);
+    motorR.run(-100);
+}
+
 // Sets which mode each component should be run on
 void setModes()
 {
-    if (channel_values[4] > (input_mid + deadzone))
+    if (channel_values[mode_ch] > (input_mid + deadzone))
     {
+        // motors = testMode;
         motors = runMotors;
         leds = runLED;
         // servos = runServo;
