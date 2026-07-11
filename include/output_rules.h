@@ -106,7 +106,7 @@ void testMode()
 // Sets which mode each component should be run on
 void setModes()
 {
-    if (channel_values[mode_ch] > (input_mid + deadzone))
+    if (channel_values[mode_ch] < (input_mid + deadzone))
     {
         motors = testMode;
         // motors = runMotors;
